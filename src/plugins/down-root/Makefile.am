@@ -8,6 +8,7 @@ MAINTAINERCLEANFILES = \
 	$(srcdir)/Makefile.in
 
 AM_CFLAGS = \
+	-I$(top_builddir)/include \
 	-I$(top_srcdir)/include \
 	$(OPTIONAL_CRYPTO_CFLAGS)
 

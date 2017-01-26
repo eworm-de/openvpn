@@ -22,4 +22,4 @@ openvpn-plugin.h: openvpn-plugin.h.in Makefile
 		-e 's|\@OPENVPN_VERSION_MAJOR\@|$(OPENVPN_VERSION_MAJOR)|' \
 		-e 's|\@OPENVPN_VERSION_MINOR\@|$(OPENVPN_VERSION_MINOR)|' \
 		-e 's|\@OPENVPN_VERSION_PATCH\@|$(OPENVPN_VERSION_PATCH)|' \
-               $< > $@.tmp && mv $@.tmp $@
+		$(srcdir)/$@.in > $@.tmp && mv $@.tmp $@
