@@ -358,7 +358,7 @@ net_route_v4_best_gw(const in_addr_t *dst, int prefixlen,
 
 /*
  * The following function is not implemented in the iproute backend as it
- * already uses netlink in route.c.
+ * uses the sitnl implementation from networking_sitnl.c.
  *
  * int
  * net_route_v6_best_gw(const struct in6_addr *dst, int prefixlen,
