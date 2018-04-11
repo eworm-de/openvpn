@@ -1,0 +1,4 @@
+d /run/openvpn-client 0750 @SYSTEMD_USER@ @SYSTEMD_USER@ -
+d /run/openvpn-server 0750 @SYSTEMD_USER@ @SYSTEMD_USER@ -
+d /etc/openvpn/client 0750 @SYSTEMD_USER@ @SYSTEMD_USER@ -
+d /etc/openvpn/server 0750 @SYSTEMD_USER@ @SYSTEMD_USER@ -

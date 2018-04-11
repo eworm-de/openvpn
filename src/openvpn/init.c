@@ -1151,6 +1151,14 @@ do_uid_gid_chroot(struct context *c, bool no_delay)
         /* set user and/or group if we want to setuid/setgid */
         if (c0->uid_gid_specified)
         {
+#ifdef ENABLE_SYSTEMD
+            if (sd_notify(0, "READY=0") > 0 && getuid() != 0)
+            {
+                msg(M_INFO, "NOTE: Running from systemd with non-root uid, skipping downgrade");
+                return;
+            }
+#endif
+
             if (no_delay)
             {
                 platform_group_set(&c0->platform_state_group);

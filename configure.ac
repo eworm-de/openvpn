@@ -367,6 +367,7 @@ AC_ARG_VAR([GIT], [path to git utility])
 AC_ARG_VAR([SYSTEMD_ASK_PASSWORD], [path to systemd-ask-password utility])
 AC_ARG_VAR([SYSTEMD_UNIT_DIR], [Path of systemd unit directory @<:@default=LIBDIR/systemd/system@:>@])
 AC_ARG_VAR([TMPFILES_DIR], [Path of tmpfiles directory @<:@default=LIBDIR/tmpfiles.d@:>@])
+AC_ARG_VAR([SYSUSERS_DIR], [Path of sysusers directory @<:@default=LIBDIR/sysusers.d@:>@])
 AC_PATH_PROGS([IFCONFIG], [ifconfig],, [$PATH:/usr/local/sbin:/usr/sbin:/sbin])
 AC_PATH_PROGS([ROUTE], [route],, [$PATH:/usr/local/sbin:/usr/sbin:/sbin])
 AC_PATH_PROGS([IPROUTE], [ip],, [$PATH:/usr/local/sbin:/usr/sbin:/sbin])
@@ -1200,6 +1201,12 @@ if test "$enable_systemd" = "yes" ; then
     else
         tmpfilesdir="\${libdir}/tmpfiles.d"
     fi
+
+    if test -n "${SYSUSERS_DIR}"; then
+        sysusersdir="${SYSUSERS_DIR}"
+    else
+        sysusersdir="\${libdir}/sysusers.d"
+    fi
 fi
 
 
@@ -1375,6 +1382,7 @@ AM_CONDITIONAL([GIT_CHECKOUT], [test "${GIT_CHECKOUT}" = "yes"])
 AM_CONDITIONAL([ENABLE_PLUGIN_AUTH_PAM], [test "${enable_plugin_auth_pam}" = "yes"])
 AM_CONDITIONAL([ENABLE_PLUGIN_DOWN_ROOT], [test "${enable_plugin_down_root}" = "yes"])
 AM_CONDITIONAL([HAVE_LD_WRAP_SUPPORT], [test "${have_ld_wrap_support}" = "yes"])
+AM_CONDITIONAL([ENABLE_IPROUTE], [test "${enable_iproute2}" = "yes"])
 
 sampledir="\$(docdir)/sample"
 AC_SUBST([plugindir])
@@ -1382,6 +1390,7 @@ AC_SUBST([sampledir])
 
 AC_SUBST([systemdunitdir])
 AC_SUBST([tmpfilesdir])
+AC_SUBST([sysusersdir])
 
 VENDOR_SRC_ROOT="\$(abs_top_srcdir)/vendor/"
 VENDOR_DIST_ROOT="\$(abs_top_builddir)/vendor/dist"

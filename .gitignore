@@ -55,6 +55,7 @@ doc/openvpn.8.html
 /doc/doxygen/openvpn.doxyfile
 distro/rpm/openvpn.spec
 distro/systemd/*.service
+distro/systemd/tmpfiles-openvpn.conf
 sample/sample-keys/sample-ca/
 vendor/.build
 vendor/dist
