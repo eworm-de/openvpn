@@ -27,7 +27,7 @@
                 "/^\\.github/workflows/.+\\.ya?ml$/"
             ],
             "matchStrings": [
-                "vcpkgGitCommitId:\\s*(?<currentDigest>.*?)\\n"
+                "VCPKG_GIT_COMMIT_ID:\\s*(?<currentDigest>.*?)\\n"
             ],
             "currentValueTemplate": "master",
             "depNameTemplate": "vcpkg",
